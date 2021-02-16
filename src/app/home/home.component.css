@@ -1,0 +1,103 @@
+
+
+.header {
+  height: 70vh;
+  background-image: linear-gradient(
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.6)
+    ),
+    url("../../assets//img/people-2557396_1920.jpg");
+  background-size: cover;
+  background-position: top;
+  position: relative;  
+}
+  
+.page-heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #aaa;
+  white-space: nowrap;
+}
+
+.page-heading-primary {
+  display: block;
+  font-size: 3.125rem;
+  font-weight: 500;
+  color: #f9f9fa;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 5px;
+}
+
+.page-heading-secondary {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+  line-height: 70px !important;
+}
+
+.card-section{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.card{
+    margin: 10px;
+    border: none;
+    box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.15);
+    text-align: center;
+   
+}
+.card-body > img{
+    height: 20px;
+    width: auto;
+    margin-bottom: 6px;
+}
+
+.title{
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+.title-2{
+   margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+ .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+   .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(black, 0.35);
+  }
+
+  /* jos seacrh card */
+  
+
+@media (max-width:600px) {
+    .header{
+        height: 50vh;
+    }
+
+    .page-heading-primary {
+        font-size: 28px;
+        font-weight: 500;
+    }
+    .page-heading-secondary{
+        font-size: 22px;
+        font-weight: 400;
+    }
+    .card{
+        margin: 10px;
+          border: none;
+    box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.15);
+    text-align: center;
+    padding: 4px;
+    }
+}

@@ -1,0 +1,150 @@
+<div class="header">
+    <h1 class="text-center">Career Support</h1>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="col-lg-6 col-sm-12">
+        <div class="card">
+            <h1 class="h1">Job Application Form</h1>
+            <div>
+                <form [formGroup]="careerForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label class="label">Full Name</label>
+                        <input type="text" formControlName="fullname" class="form-control" placeholder="Your full name "
+                            required>
+                        <div *ngIf="
+                                                                        careerForm.controls['fullname'].invalid &&
+                                                                        (careerForm.controls['fullname'].dirty ||
+                                                                            careerForm.controls['fullname'].touched)
+                                                                        " class="text-danger txt">
+                            <span *ngIf="careerForm.controls['fullname'].errors.required" class="text-danger">
+                                Fullname is required.
+                            </span>
+                            <span *ngIf="careerForm.controls['fullname'].errors.pattern" class="text-danger">
+                                Must be Alphabet.
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="label" required="required">Email address</label>
+                        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                            placeholder="Your email address">
+                        <div *ngIf="
+                                        careerForm.controls['email'].invalid &&
+                                        (careerForm.controls['email'].dirty ||
+                                            careerForm.controls['email'].touched)
+                                        " class="text-danger txt">
+                            <span *ngIf="careerForm.controls['email'].errors.required" class="text-danger">
+                                Email is required.
+                            </span>
+                            <span *ngIf="careerForm.controls['email'].errors.pattern" class="text-danger">
+                                Must be Valid email format.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Phone number</label>
+                        <input type="text" formControlName="phone" class="form-control" placeholder="Your phone "
+                            maxlength="10">
+                        <div *ngIf="
+                                careerForm.controls['phone'].invalid &&
+                                (careerForm.controls['phone'].dirty ||
+                                    careerForm.controls['phone'].touched)
+                                " class="text-danger txt">
+                            <span *ngIf="careerForm.controls['phone'].errors.required" class="text-danger">
+                                Phone is required.
+                            </span>
+                            <span *ngIf="careerForm.controls['phone'].errors.pattern" class="text-danger">
+                                Must be valid phone format.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">What's your preferred job location</label>
+                        <select class="form-control" formControlName="cityname">
+                            <option *ngFor="let sty of city" [value]="sty.cityName">
+                                {{sty.cityName}}</option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <label class="label">What functional role you are looking for </label>
+                        </div>
+                        <select class="form-control" formControlName="jobtype">
+                            <option *ngFor="let jobroles of jobrole" [value]="jobroles.jobtype">
+                                {{jobroles.jobtype}}</option>
+
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Expected salary range</label>
+                        <select class="form-control" formControlName="salaryrange">
+                            <option *ngFor="let salaryranges of salaryrange" [value]="salaryranges.value">
+                                {{salaryranges.range}}</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <label class="label">Are you a fresher</label>
+                        </div>
+                        <ng-container *ngFor="let jotypes of jobtype">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" formControlName="arefresher"
+                                    value="{{ jotypes.name }}">
+                                <label class="form-check-label" for="inlineRadio1">{{jotypes.name}}</label>
+                            </div>
+                        </ng-container>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="label" required="required">How soon are you available to start?</label>
+                        <input type="date" formControlName="startdate" class="form-control" placeholder="Date">
+                    </div>
+
+
+                    <div class="form-group mt-3">
+                        <label class="mr-4 label">Upload your CV:</label>
+                        <input type="file" accept="application/msword,  application/pdf" formControlName="file"
+                            name="file">
+                    </div>
+                    <button [disabled]="!careerForm.valid" type="submit" class="btn btn-primary">Submit
+
+                        <div *ngIf="submitbtn" class="spinner-border spinner-border-sm text-light"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" #someModal id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="!submitted">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<mat-toolbar class="toolbar">
+    <div class="container">
+        <div class="header">
+            <span>Admin Dashboard</span>
+            <button mat-icon-button (click)="logout()">
+                <mat-icon>power_settings_new</mat-icon>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>
+<div class="main-div">
+    <div class="form-div">
+        <div class="card-section">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <mat-card class="card1 mt-2">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-title">Accession</p>
+                            <span class="material-icons">
+                                manage_accounts
+                            </span>
+                        </div>
+                        <div>
+                            <p class="card-count">{{t_user}}</p>
+
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-md-4 col-sm-12 ">
+                    <mat-card class="card2 mt-2">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-title">Applications</p>
+                            <span class="material-icons">
+                                content_paste
+                            </span>
+                        </div>
+                        <div>
+                            <p class="card-count">{{t_applicant}}</p>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <mat-card class="card3 mt-2">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-title">Processing</p>
+                            <span class="material-icons">
+                                change_circle
+                            </span>
+                        </div>
+                        <div>
+                            <p class="card-count">20</p>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-div">
+        <div class="form-section">
+
+            <div>
+                <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="students">
+
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="position">
+                            <th mat-header-cell *matHeaderCellDef> No. </th>
+                            <td mat-cell *matCellDef="let students let in= index"> {{in+1}} </td>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> Name </th>
+                            <td mat-cell *matCellDef="let students"> {{students.name}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="email">
+                            <th mat-header-cell *matHeaderCellDef> Email </th>
+                            <td mat-cell *matCellDef="let students"> {{students.email}} </td>
+                        </ng-container>
+
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="weight" class="mobile">
+                            <th mat-header-cell *matHeaderCellDef> User Type </th>
+                            <td mat-cell *matCellDef="let students"> {{students.userType}} </td>
+                        </ng-container>
+
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="symbol">
+                            <th mat-header-cell *matHeaderCellDef> Activeted </th>
+                            <td mat-cell *matCellDef="let students">
+                                <mat-slide-toggle color="primary" [ngClass]="{'pointer':students.userType === 'admin'}"
+                                    checked={{students.isActived}} (click)="Aciveted(students.isActived, students._id)">
+                                </mat-slide-toggle>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

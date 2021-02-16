@@ -1,0 +1,97 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.toolbar{
+    background-color: #0B4F6C !important;
+    color: #fff;
+}
+
+
+.main-div{
+    background-color: #EBEFF5;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.form-div{
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+.form-section{
+  width: 55%;
+ 
+  border: 1px solid #F9F9FA;
+  margin-top: 20px;
+}
+
+.card-section{
+  width: 55%;
+}
+
+.material-icons{
+  font-size: 35px !important;
+}
+.card-title{
+  font-size: 20px;
+  font-weight: 400;
+}
+.card-count{
+  font-size: 30px;
+  font-weight: 600;
+}
+.card1{
+  color: #fff;
+  background-color: #3F51B5;
+  border-radius: 8px;
+
+}
+.card2{
+  color: #fff;
+  background-color: #F53B3B;
+  border-radius: 8px;
+
+}
+.card3{
+  color: #fff;
+  background-color: #20BF55;
+  border-radius: 8px;
+
+}
+
+.pointer{
+  /* background-color: black; */
+  display: none;
+}
+table {
+  width: 100%;
+  border-radius: 8px !important;
+}
+.mobile{
+  display: none !important;
+}
+
+
+@media only screen and (max-width: 500px) {
+  .form-section{
+  width: 90%;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #F9F9FA;
+  padding: 10px;
+}
+
+.card-section{
+  width: 90%;
+}
+.mobile{
+  display: none !important;
+}
+}
+
+
+
+
+

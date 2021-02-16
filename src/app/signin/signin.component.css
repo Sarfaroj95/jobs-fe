@@ -1,0 +1,31 @@
+.main{
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+.log{
+	font-weight: 100 !important;
+	font-size: 48px;
+}
+
+.sub-div{
+	width: 45%;
+}
+.right-div{
+	background-color: #F9F9FA;
+}
+
+.g-icon{
+	height: 13px;
+	width: auto;
+	
+}
+
+
+
+@media (max-width:600px) {
+	.sub-div{
+	width: 70%;
+}
+}

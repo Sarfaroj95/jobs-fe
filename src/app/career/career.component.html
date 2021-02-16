@@ -1,0 +1,181 @@
+<div class="header">
+    <h1 class="text-center">Career Support</h1>
+</div>
+<div class="bg">
+
+
+    <div class="d-flex justify-content-center">
+        <div class="container py-5">
+            <div class="shadow">
+
+
+                <div class="row">
+                    <div class="left-section col-4 bg-info d-flex justify-content-center align-items-center">
+
+
+                        <div>
+                            <img class="icon" src="../../assets/icons/register.svg" />
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-12 ">
+
+                        <div class="p-3">
+                            <h4 class="title py-2">job application form</h4>
+                            <form [formGroup]="careerForm" (ngSubmit)="onSubmit()">
+
+                                <div class="form-group">
+                                    <label class="label">Full Name</label>
+                                    <input type="text" formControlName="fullname" class="form-control" required>
+                                    <div *ngIf="
+                                                                                            careerForm.controls['fullname'].invalid &&
+                                                                                            (careerForm.controls['fullname'].dirty ||
+                                                                                                careerForm.controls['fullname'].touched)
+                                                  " class="text-danger txt">
+                                        <span *ngIf="careerForm.controls['fullname'].errors.required"
+                                            class="text-danger">
+                                            Fullname is required.
+                                        </span>
+                                        <span *ngIf="careerForm.controls['fullname'].errors.pattern"
+                                            class="text-danger">
+                                            Must be Alphabet.
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="label" required="required">Email address</label>
+                                            <input type="email" formControlName="email" class="form-control"
+                                                id="exampleInputEmail1">
+                                            <div *ngIf="
+                                                                                            careerForm.controls['email'].invalid &&
+                                                                                            (careerForm.controls['email'].dirty ||
+                                                                                                careerForm.controls['email'].touched)
+                                                                                            " class="text-danger txt">
+                                                <span *ngIf="careerForm.controls['email'].errors.required"
+                                                    class="text-danger">
+                                                    Email is required.
+                                                </span>
+                                                <span *ngIf="careerForm.controls['email'].errors.pattern"
+                                                    class="text-danger">
+                                                    Must be Valid email format.
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="label">Phone number</label>
+                                            <input type="text" formControlName="phone" class="form-control"
+                                                maxlength="10">
+                                            <div *ngIf="
+                                                    careerForm.controls['phone'].invalid &&
+                                                    (careerForm.controls['phone'].dirty ||
+                                                        careerForm.controls['phone'].touched)
+                                                    " class="text-danger txt">
+                                                <span *ngIf="careerForm.controls['phone'].errors.required"
+                                                    class="text-danger">
+                                                    Phone is required.
+                                                </span>
+                                                <span *ngIf="careerForm.controls['phone'].errors.pattern"
+                                                    class="text-danger">
+                                                    Must be valid phone format.
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="label">Job location</label>
+                                            <select class="form-control" formControlName="cityname">
+                                                <option *ngFor="let sty of city" [value]="sty.cityName">
+                                                    {{sty.cityName}}</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="label">Looking for </label>
+                                            </div>
+                                            <select class="form-control" formControlName="jobtype">
+                                                <option *ngFor="let jobroles of jobrole" [value]="jobroles.jobtype">
+                                                    {{jobroles.jobtype}}</option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="label">Expected salary range</label>
+                                            <select class="form-control" formControlName="salaryrange">
+                                                <option *ngFor="let salaryranges of salaryrange"
+                                                    [value]="salaryranges.value">
+                                                    {{salaryranges.range}}</option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="label" required="required">You available to start?</label>
+                                            <input type="date" formControlName="startdate" class="form-control"
+                                                placeholder="Date">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <div>
+                                                <label class="label">Are you a fresher</label>
+                                            </div>
+                                            <ng-container *ngFor="let jotypes of jobtype">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input " class="" type="radio"
+                                                        formControlName="arefresher" value="{{ jotypes.name }}">
+                                                    <label class="form-check-label pl-2" for="inlineRadio1">
+                                                        {{jotypes.name}}</label>
+                                                </div>
+                                            </ng-container>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="label">Upload your CV</label>
+                                            <input type="file" class="form-control-file btn btn-primary btn-sm"
+                                                accept="application/msword,  application/pdf" formControlName="file"
+                                                name="file">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button [disabled]="!careerForm.valid" type="submit" class="btn btn-primary">Submit
+
+                                    <div *ngIf="submitbtn" class="spinner-border spinner-border-sm text-light"></div>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="">
+
+        </div>
+    </div>
+
+</div>

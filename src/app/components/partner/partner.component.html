@@ -1,0 +1,303 @@
+<mat-toolbar color="primary">
+    <div class="container">
+
+        <div class="header">
+
+
+            <span>Partner Dashboard</span>
+
+            <button mat-icon-button (click)="logout()">
+                <mat-icon>power_settings_new</mat-icon>
+            </button>
+        </div>
+    </div>
+
+</mat-toolbar>
+
+<div class="main-div">
+    <div class="sub-div">
+        <p class="title">Create your profile</p>
+        <p class="sub-title">Now showing: <span class="cov"><img class="cov-icon"
+                    src="../../../assets/icons/plus-circle-solid.svg" />
+                COVID: VERIFIED HIRING</span></p>
+        <p class="sub-title">Apply privately to thousands of tech companies & startups hiring during COVID-19 with one
+            profile.</p>
+    </div>
+    <div class="form-div">
+        <div class="form-section">
+            <mat-horizontal-stepper #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel>Personal Info</ng-template>
+
+
+
+                        <div class="form-group form-w">
+                            <label>Candidate Name <span>*</span></label>
+                            <input type="text" class="form-control" formControlName="name">
+                            <div *ngIf="
+                                                    firstFormGroup.controls['name'].invalid &&
+                                                    (firstFormGroup.controls['name'].dirty ||
+                                                        firstFormGroup.controls['name'].touched)
+                                                    " class="text-danger txt">
+                                <span *ngIf="firstFormGroup.controls['name'].errors.required" class="text-danger">
+                                    Name is required.
+                                </span>
+                                <span *ngIf="firstFormGroup.controls['name'].errors.pattern" class="text-danger">
+                                    Name must be alphabet.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="text-align">
+                            <div class="form-group form-w">
+                                <label>Email Id <span>*</span></label>
+                                <input type="email" class="form-control" formControlName="email">
+                                <div *ngIf="
+                                                    firstFormGroup.controls['email'].invalid &&
+                                                    (firstFormGroup.controls['email'].dirty ||
+                                                        firstFormGroup.controls['email'].touched)
+                                                    " class="text-danger txt">
+                                    <span *ngIf="firstFormGroup.controls['email'].errors.required" class="text-danger">
+                                        Email is required.
+                                    </span>
+                                    <span *ngIf="firstFormGroup.controls['email'].errors.pattern" class="text-danger">
+                                        Must be Valid email format.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group form-w right-s">
+                                <label>Phone <span>*</span></label>
+                                <input type="text" formControlName="phone" class="form-control" maxlength="10">
+
+                                <div *ngIf="
+                                                firstFormGroup.controls['phone'].invalid &&
+                                                (firstFormGroup.controls['phone'].dirty ||
+                                                    firstFormGroup.controls['phone'].touched)
+                                                " class="text-danger txt">
+                                    <span *ngIf="firstFormGroup.controls['phone'].errors.required" class="text-danger">
+                                        Phone is required.
+                                    </span>
+                                    <span *ngIf="firstFormGroup.controls['phone'].errors.pattern" class="text-danger">
+                                        Must be valid phone format.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="text-align">
+                            <div class="form-group form-w">
+                                <label>Current/Last Organisation *</label>
+                                <input type="text" class="form-control" formControlName="current_organization">
+                                <div *ngIf="
+                                        firstFormGroup.controls['current_organization'].invalid &&
+                                        (firstFormGroup.controls['current_organization'].dirty ||
+                                            firstFormGroup.controls['current_organization'].touched)
+                                        " class="text-danger txt">
+                                    <span *ngIf="firstFormGroup.controls['current_organization'].errors.required"
+                                        class="text-danger">
+                                        Organization is required.
+                                    </span>
+                                    <span *ngIf="firstFormGroup.controls['current_organization'].errors.pattern"
+                                        class="text-danger">
+                                        Organization must be alphabet.
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group form-w right-s">
+                                <label>Job Role *</label>
+                                <input type="text" class="form-control" id="typeahead-format" type="text"
+                                    class="form-control" [ngbTypeahead]="searchjob" [resultFormatter]="formatter"
+                                    formControlName="jobrole">
+                                <div *ngIf="
+                                            firstFormGroup.controls['jobrole'].invalid &&
+                                            (firstFormGroup.controls['jobrole'].dirty ||
+                                                firstFormGroup.controls['jobrole'].touched)
+                                            " class="text-danger txt">
+                                    <span *ngIf="firstFormGroup.controls['jobrole'].errors.required"
+                                        class="text-danger">
+                                        Jobrole is required.
+                                    </span>
+                                    <span *ngIf="firstFormGroup.controls['jobrole'].errors.pattern" class="text-danger">
+                                        Jobrole must be alphabet.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-align">
+                            <div class="form-group form-w ">
+                                <label>Current Status of the candidate *</label>
+
+
+                                <select class="form-control" formControlName="workstatus">
+                                    <option *ngFor="let status of statusarr" [value]="status.name">{{status.name}}
+                                    </option>
+
+                                </select>
+
+
+                            </div>
+                            <div class="form-group form-w right-s">
+                                <label>Current location *</label>
+                                <input type="text" class="form-control" formControlName="location" id="typeahead-format"
+                                    type="text" class="form-control" [ngbTypeahead]="searchstate"
+                                    [resultFormatter]="formatter">
+                                <div *ngIf="
+                                                                firstFormGroup.controls['location'].invalid &&
+                                                                (firstFormGroup.controls['location'].dirty ||
+                                                                    firstFormGroup.controls['location'].touched)
+                                                                " class="text-danger txt">
+                                    <span *ngIf="firstFormGroup.controls['location'].errors.required"
+                                        class="text-danger">
+                                        location is required.
+                                    </span>
+                                    <span *ngIf="firstFormGroup.controls['location'].errors.pattern"
+                                        class="text-danger">
+                                        location must be alphabet.
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div>
+                            <button mat-raised-button [disabled]="!firstFormGroup.valid" color="primary" matStepperNext
+                                (click)="submitOne()">Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Tech Details</ng-template>
+                        <div>
+
+                            <div formArrayName="total_technology">
+                                <div *ngFor="let item of totalTech.controls; let techIndex=index"
+                                    [formGroupName]="techIndex">
+                                    <div class="text-align">
+                                        <div class="form-group form-w">
+                                            <label>Technical Skills *</label>
+                                            <input id="typeahead-format" type="text" class="form-control"
+                                                [ngbTypeahead]="search" [resultFormatter]="formatter"
+                                                formControlName="tech" placeholder="Enter Technology">
+                                        </div>
+                                        <div class="form-group form-w right-s">
+                                            <label>Choose rating *</label>
+                                            <div class="input-group">
+                                                <input type="text" id="typeahead-format" class="form-control"
+                                                    formControlName="techrating" placeholder="Rating (1-10)"
+                                                    [ngbTypeahead]="searchrate" [resultFormatter]="formatter">
+                                                <span class="input-group-text" (click)="DeleteTechRow(techIndex)">
+                                                    &#8722;
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="pb-3">
+                                    <button mat-mini-fab color="warn" (click)="AddTechRow()">
+                                        <mat-icon>add</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-align">
+                            <div class="form-group form-w">
+                                <label>Soft Skills & Behaviour *</label>
+                                <select class="form-control" formControlName="skill">
+                                    <option *ngFor="let skill of skillarr" [value]="skill.name">{{skill.name}}
+                                    </option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group form-w right-s">
+
+                                <label>Choose rating *</label>
+                                <input type="text" id="typeahead-format" class="form-control"
+                                    formControlName="skillrate" placeholder="Rating (1-10)" [ngbTypeahead]="searchrate"
+                                    [resultFormatter]="formatter">
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <div class="form-group">
+                                <label>Overall assessment & competence summary</label>
+                                <textarea class="form-control text-area" formControlName="overall" rows="3"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div>
+
+                            <button mat-raised-button [disabled]="!secondFormGroup.valid" color="primary" matStepperNext
+                                (click)="submitTwo()">Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <form [formGroup]="thirdForm">
+                        <ng-template matStepLabel>Career Deatils</ng-template>
+                        <div>
+                            <div class="form-group form-w">
+                                <label>Time to join *</label>
+                                <input class="form-control" type="date" formControlName="joindate">
+                            </div>
+                        </div>
+                        <div class="text-align">
+                            <div class="form-group form-w">
+                                <label>Current/Last CTC *</label>
+                                <select class="form-control" formControlName="cctc">
+                                    <option *ngFor="let cctc of c_ctc" [value]="cctc.value">{{cctc.name}}
+                                    </option>
+
+                                </select>
+                            </div>
+                            <div class="form-group form-w right-s">
+                                <label>Expected CTC *</label>
+                                <select class="form-control" formControlName="ectc">
+                                    <option *ngFor="let cctc of c_ctc" [value]="cctc.value">{{cctc.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Reason for looking out</label>
+                            <textarea class="form-control text-area" formControlName="reason" rows="3"></textarea>
+                        </div>
+                        <div>
+                            <!-- <button mat-button matStepperPrevious>Back</button> -->
+                            <!-- <button mat-button (click)="stepper.reset()">Submit</button> -->
+                            <button mat-raised-button color="primary" matStepperNext (click)="submitThree()"
+                                [disabled]="!thirdForm.valid">Submit</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    <div class="text-center">
+                        <div class="py-3">
+                            <img class="icon-tick" src="../../../assets/icons/check-circle-regular.svg" />
+                        </div>
+                        <h6>Well Done</h6>
+                        <p class="msg">We appreciate you contacting us. Will get back in touch with you soon!</p>
+                        <p>Have a great day!</p>
+
+                        <button mat-raised-button
+                            (click)="firstFormGroup.reset();secondFormGroup.reset();thirdForm.reset();stepper.reset()">Ok</button>
+                    </div>
+                </mat-step>
+
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+</div>

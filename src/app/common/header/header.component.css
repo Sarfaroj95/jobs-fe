@@ -1,0 +1,32 @@
+
+
+
+.navbar{
+  height: 80px;
+}
+.nav-item > a{
+    font-size: 18px;
+    
+}
+.router-link-active{
+  font-weight: 600;
+  color: green;
+}
+
+
+/* .navbar-collapse{
+    padding: 0px;
+    margin: 0px;
+}
+
+.navbar-nav > .nav-item > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #4d1414;
+  font-size: 18px;
+}
+.navbar-nav > .nav-item > a:hover {
+  background-color: rgba(54, 54, 54, 0.3);
+}
+*/

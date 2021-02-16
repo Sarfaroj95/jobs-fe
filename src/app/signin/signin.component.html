@@ -1,0 +1,87 @@
+<div class="main">
+    <div class="sub-div">
+        <p class="text-center pb-4 log">Log in</p>
+        <div class="login-div">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 border">
+                    <div class="pt-4 pb-4 p-3">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <!-- <label>Email address</label> -->
+                                <input type="email" placeholder="Email" class="form-control " formControlName="email"
+                                    required>
+                                <div *ngIf="
+                                                                loginForm.controls['email'].invalid &&
+                                                                (loginForm.controls['email'].dirty ||
+                                                                  loginForm.controls['email'].touched)
+                                                              " class="text-danger txt">
+                                    <span *ngIf="loginForm.controls['email'].errors.required" class="text-danger">
+                                        Email is required.
+                                    </span>
+                                    <span *ngIf="loginForm.controls['email'].errors.pattern" class="text-danger">
+                                        Must be Valid email format.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label>Password</label> -->
+                                <input type="password" placeholder="Password" class="form-control "
+                                    formControlName="password" required>
+                                <div *ngIf="
+                                                                loginForm.controls['password'].invalid &&
+                                                                (loginForm.controls['password'].dirty ||
+                                                                  loginForm.controls['password'].touched)
+                                                              " class="text-danger txt">
+                                    <span *ngIf="loginForm.controls['password'].errors.required" class="text-danger">
+                                        Password is required.
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <select class="form-control" formControlName="userType">
+                                    <option selected *ngFor="let name of logType" [value]="name.value">{{name.type}}
+                                    </option>
+                                </select>
+                                <div *ngIf="
+                                        loginForm.controls['userType'].invalid &&
+                                        (loginForm.controls['userType'].dirty ||
+                                            loginForm.controls['userType'].touched)
+                                        " class="text-danger txt">
+                                    <span *ngIf="loginForm.controls['userType'].errors.required" class="text-danger">
+                                        Field is required.
+                                    </span>
+                                </div>
+
+
+                            </div>
+                            <div class="mt-2">
+
+                                <button [disabled]="!loginForm.valid" class="btn btn-primary">
+
+                                    Log
+                                    in
+                                </button>
+
+                                <p class="pt-2">Need an account?<a [routerLink]="['/signup']"> Sign Up »</a></p>
+
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 border right-div">
+                    <div class="p-4">
+                        <button class="border btn btn-default btn-md btn-block text-left bg-white text-black">
+                            <img class="g-icon" src="../../assets/icons/google-brands.svg" />
+                            <span class="ml-3"> Log
+                                in with Google </span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-div{
+    background-color: #EBEFF5;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.sub-div{
+  text-align: center;
+}
+.form-div{
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+.form-section{
+  width: 55%;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #F9F9FA;
+  padding: 10px;
+}
+
+.title{
+  font-size: 32px;
+  font-weight: 700;
+}
+.sub-title{
+  font-size: 16px;
+  font-weight: 400;
+}
+.cov{
+  background-color: #E1FAF3;
+  font-size: 12px !important;
+  padding: 4px;
+  border-radius: 10px;
+  padding-left: 4px;
+  padding-right: 6px;
+  font-weight: 200;
+}
+
+.cov-icon{
+  height: 15px;
+  width: auto;
+  margin-top: -3px;
+}
+
+.form-w{
+  width: 40%;
+}
+
+.text-align{
+  display: flex;
+ 
+}
+
+.right-s{
+  margin-left: 10px;
+}
+
+.input-group-text{
+     border-top-left-radius: 0px !important;
+     border-bottom-left-radius: 0px !important;
+     cursor: pointer;
+}
+
+.text-area{
+  width: 82%;
+}
+.icon-tick{
+  width: 40px;
+  height: auto;
+}
+.msg{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* mobile */
+@media only screen and (max-width: 500px) {
+  .form-section{
+  width: 90%;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #F9F9FA;
+  padding: 10px;
+}
+
+.ng-temp{
+  display: none !important;
+}
+
+.title{
+  font-size: 28px;
+  font-weight: 700;
+}
+.sub-title{
+  font-size: 16px;
+  font-weight: 400;
+ 
+}
+ .form-w{
+  width: 100%;
+}
+.text-area{
+  width: 100%;
+}
+
+.text-align{
+  display: block;
+ 
+}
+
+.right-s{
+  margin-left: 0px;
+}
+}

@@ -1,0 +1,29 @@
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+.cover-img{
+    background-size: contain;
+    height: 160px;
+    width: auto;
+}
+
+.card-text{
+    line-height: 15px;
+}
+
+.card{
+    margin-top: 20px;
+}
+
+@media (max-width:600px) {
+	.card-horizontal {
+    display: block;
+    flex: 1 1 auto;
+}
+.cover-img{
+    background-size: cover;
+    height: 210px;
+    width: auto;
+}
+}

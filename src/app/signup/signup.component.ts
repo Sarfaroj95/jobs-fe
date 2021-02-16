@@ -19,6 +19,8 @@ export class SignupComponent implements OnInit {
     { type: "Recruiter", value: "recruiter" },
     { type: "Partner", value: "partner" }
   ]
+
+  loading: boolean = false
   constructor(private fb: FormBuilder, private toastr: ToastrManager, private auth: AuthService, private route: Router) {
     var tok = this.auth.getToken()
     var UserT = this.auth.getUsertype()
@@ -68,15 +70,20 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     let value = this.loginForm.value
     console.log("Log Value", value)
+    this.loading = true;
     this.auth.Reg(value).subscribe(
       result => {
         console.log("Register Success full")
-        this.toastr.successToastr("Resister is done. Need aprove by admin.", "Successful", { timeOut: 3000 });
+        this.toastr.successToastr("Thank you. You need aprove by admin.", "Successful", { timeOut: 3000 });
         this.loginForm.reset();
+        this.loading = false;
+
       },
       error => {
         let er = error.error.errors[0];
         this.toastr.errorToastr(er.details, er.title, { timeOut: 3000 });
+        this.loading = false;
+
       }
     )
 

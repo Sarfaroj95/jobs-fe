@@ -15,6 +15,7 @@ import { AuthService } from "../service/service.service"
 export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   userData: any = []
+  loading: boolean = false
   logType: any = [
 
     { type: "Admin", value: "admin" },
@@ -69,6 +70,7 @@ export class SigninComponent implements OnInit {
   onSubmit() {
     let value = this.loginForm.value
     console.log("Log Value", value)
+    this.loading = true;
     this.auth.login(value).subscribe(
       res => {
         console.log("Respoce", res),
@@ -78,6 +80,7 @@ export class SigninComponent implements OnInit {
 
         this.auth.userType(res.id).subscribe(
           result => {
+
 
             if (result.isActived == true) {
 
@@ -95,7 +98,10 @@ export class SigninComponent implements OnInit {
                 default:
                   this.route.navigate(['/signin'])
               }
+              this.loading = false;
+
             } else {
+              this.loading = false;
               this.toastr.errorToastr("You are not activated.", "Invalid", { timeOut: 3000 });
             }
 
@@ -112,6 +118,8 @@ export class SigninComponent implements OnInit {
       error => {
         let er = error.error.errors[0];
         this.toastr.errorToastr(er.details, er.title, { timeOut: 3000 });
+        this.loading = false;
+        this.loginForm.reset()
       }
     )
   }

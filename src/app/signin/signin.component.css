@@ -22,6 +22,11 @@
 	
 }
 
+.spinner-grow{
+	height: 20px !important;
+	width: 20px !important;
+}
+
 
 
 @media (max-width:600px) {

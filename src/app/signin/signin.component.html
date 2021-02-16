@@ -62,6 +62,9 @@
 
                                     Log
                                     in
+                                    <div class="spinner-grow" role="status" *ngIf="loading">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
                                 </button>
 
                                 <p class="pt-2">Need an account?<a [routerLink]="['/signup']"> Sign Up »</a></p>

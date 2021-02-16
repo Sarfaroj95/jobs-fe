@@ -81,6 +81,9 @@
                                 <button [disabled]="!loginForm.valid" class="btn btn-primary">
 
                                     Submit
+                                    <div class="spinner-grow" role="status" *ngIf="loading">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
                                 </button>
                                 <p class="pt-2"> Already have an account? <a [routerLink]="['/signin']">Log in »</a></p>
 
